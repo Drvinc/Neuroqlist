@@ -5,9 +5,6 @@ body{
   background-color: floralwhite;
   margin: 0;
 }
-#author {
-  background-color: #fbfffb
-}
 .header, .main, .nav, .footer {
   max-width: 800px;
   min-width: 320px;
@@ -22,11 +19,7 @@ h2,h3 {
   text-decoration: underline;
   margin: 0.6em auto 0.4em auto;
 }
-figure {
-  border-left: 5px #dddddd solid;
-  padding: 0 0.8em;
-}
-p,ul,figure{
+p,ul{
   margin: 0.4em auto;
 }
 ul {
@@ -44,9 +37,6 @@ ul {
 .nav li+li:before {
   content: "| ";
 }
-.portrait{
-  object-fit: cover;
-  height: 200px;
-  width: 200px;
-  border-radius: 0.5em;
+a{
+  text-decoration: none;
 }
