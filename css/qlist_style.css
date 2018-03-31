@@ -1,0 +1,52 @@
+*{
+  box-sizing: border-box;
+}    
+body{
+  background-color: floralwhite;
+  margin: 0;
+}
+#author {
+  background-color: #fbfffb
+}
+.header, .main, .nav, .footer {
+  max-width: 800px;
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 0 1.5em;
+  border-bottom: 2px #ffe2cc solid;
+}
+h1 {
+  text-align: center;
+}
+h2,h3 {
+  text-decoration: underline;
+  margin: 0.6em auto 0.4em auto;
+}
+figure {
+  border-left: 5px #dddddd solid;
+  padding: 0 0.8em;
+}
+p,ul,figure{
+  margin: 0.4em auto;
+}
+ul {
+  padding-left: 1.5em;
+}
+
+.nav ul{
+  list-style: none;
+  padding-left: 0;
+  font-size: 1.1em;
+}
+.nav li{
+  display: inline-block;
+}
+.nav li+li:before {
+  content: "| ";
+}
+.portrait{
+  object-fit: cover;
+  height: 200px;
+  width: 200px;
+  border-radius: 0.5em;
+}
