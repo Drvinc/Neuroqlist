@@ -16,8 +16,13 @@ h1 {
   text-align: center;
 }
 h2,h3 {
-  text-decoration: underline;
   margin: 0.6em auto 0.4em auto;
+}
+h2 {
+  text-decoration: underline;
+}
+h3 {
+  padding-left: 0.4em;
 }
 p,ul{
   margin: 0.4em auto;
