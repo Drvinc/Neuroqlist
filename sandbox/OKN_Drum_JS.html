@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Optokinetics nystagmus -- OKN Drum</title>
+<style type="text/css">
+  * {
+    margin: 0;
+  }
+  body {
+    background:#fff;
+  }
+  #bar1,#bar2,#bar3,#bar4,#bar5,#bar6,#bar7 {
+    background-color: black;
+    position: absolute; 
+  }
+</style>
+</head>
+
+<body>
+  <div id="bar1"></div>
+  <div id="bar2"></div>
+  <div id="bar3"></div>
+  <div id="bar4"></div>
+  <div id="bar5"></div>
+  <div id="bar6"></div>
+  <div id="bar7"></div>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var width = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+    var barwidth = width / 12;
+    
+    var height = window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight;
+
+    var bar1 = document.getElementById("bar1");
+    var bar2 = document.getElementById("bar2");
+    var bar3 = document.getElementById("bar3");
+    var bar4 = document.getElementById("bar4");
+    var bar5 = document.getElementById("bar5");
+    var bar6 = document.getElementById("bar6");
+    var bar7 = document.getElementById("bar7");
+    bar1.style.width = barwidth + 'px';
+    bar1.style.height = height + 'px';
+    bar2.style.width = barwidth + 'px';
+    bar2.style.height = height + 'px';
+    bar3.style.width = barwidth + 'px';
+    bar3.style.height = height + 'px';
+    bar4.style.width = barwidth + 'px';
+    bar4.style.height = height + 'px';
+    bar5.style.width = barwidth + 'px';
+    bar5.style.height = height + 'px';
+    bar6.style.width = barwidth + 'px';
+    bar6.style.height = height + 'px';
+    bar7.style.width = barwidth + 'px';
+    bar7.style.height = height + 'px';
+    
+    var start = Date.now();
+    var timer = setInterval(function() {
+      var timePassed = Date.now() - start;
+
+      bar1.style.left = (timePassed*width/2000 % (width+2*barwidth)) - barwidth + 'px';
+      bar2.style.left = ((timePassed*width/2000 + 2*barwidth) % (width+2*barwidth)) - barwidth + 'px';
+      bar3.style.left = ((timePassed*width/2000 + 4*barwidth) % (width+2*barwidth)) - barwidth + 'px';
+      bar4.style.left = ((timePassed*width/2000 + 6*barwidth) % (width+2*barwidth)) - barwidth + 'px';
+      bar5.style.left = ((timePassed*width/2000 + 8*barwidth) % (width+2*barwidth)) - barwidth + 'px';
+      bar6.style.left = ((timePassed*width/2000 + 10*barwidth) % (width+2*barwidth)) - barwidth + 'px';
+      bar7.style.left = ((timePassed*width/2000 + 12*barwidth) % (width+2*barwidth)) - barwidth + 'px';
+      }, 20);
+    }
+</script>
+</body>
+</html>
