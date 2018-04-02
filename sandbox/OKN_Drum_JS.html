@@ -33,6 +33,7 @@
     || document.documentElement.clientWidth
     || document.body.clientWidth;
     var barwidth = width / 12;
+    var o_width = width + 2*barwidth;
     
     var height = window.innerHeight
     || document.documentElement.clientHeight
@@ -64,14 +65,14 @@
     var timer = setInterval(function() {
       var timePassed = Date.now() - start;
 
-      bar1.style.left = (timePassed*width/2000 % (width+2*barwidth)) - barwidth + 'px';
-      bar2.style.left = ((timePassed*width/2000 + 2*barwidth) % (width+2*barwidth)) - barwidth + 'px';
-      bar3.style.left = ((timePassed*width/2000 + 4*barwidth) % (width+2*barwidth)) - barwidth + 'px';
-      bar4.style.left = ((timePassed*width/2000 + 6*barwidth) % (width+2*barwidth)) - barwidth + 'px';
-      bar5.style.left = ((timePassed*width/2000 + 8*barwidth) % (width+2*barwidth)) - barwidth + 'px';
-      bar6.style.left = ((timePassed*width/2000 + 10*barwidth) % (width+2*barwidth)) - barwidth + 'px';
+      bar1.style.left = timePassed*width/2000 % o_width - barwidth + 'px';
+      bar2.style.left = ((timePassed*width/2000 + 2*barwidth) % o_width) - barwidth + 'px';
+      bar3.style.left = ((timePassed*width/2000 + 4*barwidth) % o_width) - barwidth + 'px';
+      bar4.style.left = ((timePassed*width/2000 + 6*barwidth) % o_width) - barwidth + 'px';
+      bar5.style.left = ((timePassed*width/2000 + 8*barwidth) % o_width) - barwidth + 'px';
+      bar6.style.left = ((timePassed*width/2000 + 10*barwidth) % o_width) - barwidth + 'px';
       bar7.style.left = ((timePassed*width/2000 + 12*barwidth) % (width+2*barwidth)) - barwidth + 'px';
-      }, 20);
+      }, 5);
     }
 </script>
 </body>
