@@ -2,42 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CSV table</title>
+  <meta name="viewport" content="width=device-width">
+  <title>Anticonvulsants</title>
   <script src="../js/d3.v3.min.js"></script>
-  <style type="text/css">
-    table {
-      border-spacing: 0px;
-      border-top: 1px solid black;
-      border-bottom: 1px solid black;
-    }
-    td {
-      padding: 1px 5px;
-    }
-    tr:first-child, td:first-child { 
-      font-weight: bold;
-    }
-    tr:nth-child(even){
-      background-color: #f2f2f2;
-    }
-    tr:first-child>td {
-      border-bottom: 1px solid black;
-    }
-  </style>
+  <script src="../js/topic_load.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/topic_style.css">
 </head>
 <body>
-  <script type="text/javascript">
-    d3.text("../csv_tables/AEDs.csv", function(data) {
-        var parsedCSV = d3.csv.parseRows(data);
-        var container = d3.select("body")
-            .append("table")
-            .selectAll("tr")
-                .data(parsedCSV).enter()
-                .append("tr")
-            .selectAll("td")
-                .data(function(d) { return d; }).enter()
-                .append("td")
-                .text(function(d) { return d; });
-    });
-  </script>
+
+<h3>Anticonvulsants</h3>
+<table id="AEDs"></table>
+<p>Mechanism of action</p>
+<img src="../files/schmidt2014_fig4_AEDs.png" alt="AEDs mechanism of action">
+
+<script type="text/javascript">
+  renderTable ("../csv_tables/AEDs.csv", "#AEDs");
+</script>
+
 </body>
 </html>
