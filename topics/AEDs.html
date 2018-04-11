@@ -5,18 +5,23 @@
   <meta name="viewport" content="width=device-width">
   <title>Anticonvulsants</title>
   <script src="../js/d3.v3.min.js"></script>
+  <script src="../js/exif.js"></script>
   <script src="../js/topic_load.js"></script>
   <link rel="stylesheet" type="text/css" href="../css/topic_style.css">
 </head>
 <body>
 
-<h3>Anticonvulsants</h3>
-<table id="AEDs"></table>
-<p>Mechanism of action</p>
-<img src="../files/schmidt2014_fig4_AEDs.png" alt="AEDs mechanism of action">
+<h4>Anticonvulsants</h4>
+<table id="AEDs_tab"></table>
+
+<h4>Mechanism of action</h4>
+<figure>
+  <img id="AEDs_img" src="../files/schmidt2014_fig4_AEDs.jpg" alt="AEDs mechanism of action">
+</figure>
 
 <script type="text/javascript">
-  renderTable ("../csv_tables/AEDs.csv", "#AEDs");
+  renderTable ("../csv_tables/AEDs.csv", "#AEDs_tab");
+  renderImage ("AEDs_img");
 </script>
 
 </body>
