@@ -1,19 +1,19 @@
-AED,Trade name,Abbrev.,MOA,Metabolism,Adverse effect,Gen.,Dosage
-Carbamazepine,Tegretol,CBZ,Na & Ca channels,hep > ren; enzyme inducing,SIADH,1st,
-Clobazam,Onfi,CLB,GABA,hepatic,,2nd,
-Clonazepam,Rivotril; Klonopin,CLZ,GABA,,,1st,
-Ethosuximide,Zarontin,ESX,Ca channel,hep > ren,,1st,
-Gabapentin,Neurontin,GBP,GABA,renal,,2nd,
-Lacosamide,Vimpat,LCM,Na channel,ren & hep,,2nd,
-Lamotrigine,Lamictal,LTG,Na channel,hep > ren,,2nd,
-Levetiracetam,Keppra,LEV,SV2A,ren > hep,,2nd,
-Oxcarbazepine,Trileptal,OXC,Na & Ca channels,ren & hep,,2nd,
-Perapanel,Fycompa,PER,AMPA,hepatic,,2nd,
-Phenobarbital,Luminal,PB,GABA,hep > ren; enzyme inducing,,1st,
-Phenytoin,Dilantin,PHT,Na & Ca channels,hep > ren; enzyme inducing,ataxia; neuropathy; gingival hyperplasia,1st,
-Pregabalin,Lyrica,PGB,GABA,renal,,2nd,
-Rufinamide,Banzel,RUF,Na channel,hepatic,,2nd,
-Topiramate,Topamax,TPM,AMPA; GABA; CA,renal; enzyme inducing,,2nd,
-Valproic acid,Depakene,VPA,Na & Ca channels,hepatic CYP450,elevated LFTs,1st,
-Vigabatrin,Sabril,VGB,GABA,renal,,2nd,
-Zonisamide,Zonegran,ZNS,Na & Ca channels,hep > ren,,2nd,
+AED,Trade name,Abbrev.,MOA,Metabolism,Protein binding,Adverse effect,Gen.,Dosage
+Carbamazepine,Tegretol,CBZ,Na & Ca channels,hep > ren; enzyme inducing,,SIADH,1st,200 – 400 mg TID
+Clobazam,Onfi,CLB,GABA,hepatic,,,2nd,5 – 40mg BID
+Clonazepam,Rivotril; Klonopin,CLZ,GABA,,,,1st,
+Ethosuximide,Zarontin,ESX,Ca channel,hep > ren,,,1st,1000 mg/day TID
+Gabapentin,Neurontin,GBP,GABA,renal,,,2nd,300 mg HS – 3600 mg/day BID
+Lacosamide,Vimpat,LCM,Na channel,ren & hep,,,2nd,25 – 200 mg BID
+Lamotrigine,Lamictal,LTG,Na channel,hep > ren,,,2nd,25 – 200 mg BID (100 mg BID if VPA)
+Levetiracetam,Keppra,LEV,SV2A,ren > hep,< 10%,,2nd,250 – 1500 mg BID
+Oxcarbazepine,Trileptal,OXC,Na & Ca channels,ren & hep,40%,,2nd,300 – 600 mg BID; max 2400 mg/day
+Perapanel,Fycompa,PER,AMPA,hepatic,,irritability,2nd,2 – 12mg HS
+Phenobarbital,Luminal,PB,GABA,hep > ren; enzyme inducing,20 – 45%,,1st,100 – 300 mg/day BID; Loading 20 mg/kg if SE
+Phenytoin,Dilantin,PHT,Na & Ca channels,hep > ren; enzyme inducing [nonlinear!],90%,ataxia; neuropathy; gingival hyperplasia,1st,Loading 20mg/kg; then 5 mg/kg/day BID
+Pregabalin,Lyrica,PGB,GABA,renal,,,2nd,75 – 300 mg BID
+Rufinamide,Banzel,RUF,Na channel,hepatic,,,2nd,200 – 1600 mg BID
+Topiramate,Topamax,TPM,AMPA; GABA; CA,renal; enzyme inducing,,,2nd,25 mg QD – 100 mg BID
+Valproic acid,Depakene,VPA,Na & Ca channels,hepatic CYP450,> 90%,elevated LFTs,1st,[10–15] mg/kg/day BID – 60 mg/kg/day 
+Vigabatrin,Sabril,VGB,GABA,renal,,,2nd,500mg – 3g/day BID  
+Zonisamide,Zonegran,ZNS,Na & Ca channels,hep > ren,,,2nd,100 – 400 mg/day QD or BID
