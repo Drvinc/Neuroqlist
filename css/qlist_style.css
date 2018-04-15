@@ -9,17 +9,22 @@ body{
   max-width: 800px;
   min-width: 320px;
   margin: 0 auto;
-  padding: 0 1.5em;
-  border-bottom: 2px #ffe2cc solid;
+  padding: 0 0.5em;
+}
+.header {
+  background-color: #369;  
 }
 h1 {
   text-align: center;
+  color: white;
+  padding: 0.25em;
 }
 h2,h3 {
   margin: 0.6em auto 0.4em auto;
 }
 h2 {
-  text-decoration: underline;
+  color: #985735;
+  border-bottom: 1px solid #ddd;
 }
 h3 {
   padding-left: 0.4em;
@@ -33,11 +38,15 @@ ul {
 li {
   margin: 0.2em auto;
 }
+a{
+  text-decoration: none;
+  font-size: 0.9em;
+}
 
 .nav ul{
   list-style: none;
-  padding-left: 0;
   font-size: 1.2em;
+  padding: 0;
 }
 .nav li{
   display: inline-block;
@@ -48,7 +57,11 @@ li {
 .nav a{
   font-size: 1em;
 }
-a{
-  text-decoration: none;
-  font-size: 0.9em;
+
+.footer {
+  border-top: 0.2em solid #369;
+}
+.footer p {
+  font-family: monospace;
+  color: grey;
 }
