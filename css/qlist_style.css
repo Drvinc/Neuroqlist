@@ -13,7 +13,7 @@ body{
 }
 .header {
   color: #006e49;
-  border: 2px dashed #006e49;
+  border: 1px dashed #006e49;
   border-radius: 0 0 0.6em 0.6em;
   padding: 0;
 }
@@ -60,7 +60,7 @@ a{
 }
 
 .footer {
-  border: 2px dashed #006e49;
+  border: 1px dashed #006e49;
   border-radius: 0.6em 0.6em 0 0;
 }
 .footer p {
