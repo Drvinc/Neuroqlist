@@ -12,13 +12,12 @@ body{
   padding: 0 0.5em;
 }
 .header {
-  background-color: #369;  
+  border: 1px dashed #ddd;
+  border-radius: 0 0 0.5em 0.5em;
   padding: 0;
-  border: solid #369;
 }
 h1 {
   text-align: center;
-  color: white;
 }
 h2,h3 {
   margin: 0.6em auto 0.4em auto;
@@ -60,7 +59,8 @@ a{
 }
 
 .footer {
-  border-top: 0.2em solid #369;
+  border: 1px dashed #ddd;
+  border-radius: 0.5em 0.5em 0 0;
 }
 .footer p {
   font-family: monospace;
