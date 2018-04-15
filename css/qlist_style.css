@@ -10,11 +10,10 @@ body{
   min-width: 320px;
   margin: 0 auto;
   padding: 0 0.5em;
+  border-bottom: 1px dashed #ddd;
 }
 .header {
   color: #006e49;
-  border: 1px dashed #006e49;
-  border-radius: 0 0 0.6em 0.6em;
   padding: 0;
 }
 h1 {
@@ -24,8 +23,8 @@ h2,h3 {
   margin: 0.6em auto 0.4em auto;
 }
 h2 {
-  color: #985735;
-  border-bottom: 1px solid #ddd;
+  color: #006e49;
+  border-bottom: 1px solid #eee;
 }
 h3 {
   padding-left: 0.4em;
@@ -59,10 +58,6 @@ a{
   font-size: 1em;
 }
 
-.footer {
-  border: 1px dashed #006e49;
-  border-radius: 0.6em 0.6em 0 0;
-}
 .footer p {
   font-family: monospace;
   color: #777;
