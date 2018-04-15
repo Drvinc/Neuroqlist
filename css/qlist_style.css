@@ -10,7 +10,7 @@ body{
   min-width: 320px;
   margin: 0 auto;
   padding: 0 0.5em;
-  border-bottom: 1px dashed #ddd;
+  border-bottom: 1px solid #006e49;
 }
 .header {
   color: #006e49;
@@ -24,7 +24,7 @@ h2,h3 {
 }
 h2 {
   color: #006e49;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px dotted #006e49;
 }
 h3 {
   padding-left: 0.4em;
