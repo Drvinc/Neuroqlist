@@ -6,7 +6,7 @@ Ethosuximide,Zarontin,ESX,Ca channel,hep > ren,,,1st,1000 mg/day TID
 Gabapentin,Neurontin,GBP,GABA,renal,,,2nd,300 mg HS – 3600 mg/day BID
 Lacosamide,Vimpat,LCM,Na channel,ren & hep,,,2nd,25 – 200 mg BID
 Lamotrigine,Lamictal,LTG,Na channel,hep > ren,,,2nd,25 – 200 mg BID (100 mg BID if VPA)
-Levetiracetam,Keppra,LEV,SV2A,ren > hep,< 10%,,2nd,250 – 1500 mg BID
+Levetiracetam,Keppra,LEV,SV2A,ren > hep,< 10%,"personality changes, irritability, sedation, hallucinations.",2nd,250 – 1500 mg BID
 Oxcarbazepine,Trileptal,OXC,Na & Ca channels,ren & hep,40%,,2nd,300 – 600 mg BID; max 2400 mg/day
 Perapanel,Fycompa,PER,AMPA,hepatic,,irritability,2nd,2 – 12mg HS
 Phenobarbital,Luminal,PB,GABA,hep > ren; enzyme inducing,20 – 45%,,1st,100 – 300 mg/day BID; Loading 20 mg/kg if SE

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OKN Drum with D3</title>
+  <script src="../js/d3.v3.min.js"></script>
+  <style type="text/css">
+    p {
+      display: inline;
+    }
+  </style>
+</head>
+<body>
+
+<form>  
+  <p>Band number: <input type="range" min="2" max="12" value="6" id="bandNum"></p><p id="bandN"></p> | 
+  <p>Period interval: <input type="range" min="500" max="4000" value="2000" step="100" id="periodInt"></p><p id="periodI"></p>
+</form>
+  
+<script type="text/javascript">
+  var bandNum = document.getElementById("bandNum");
+  var periodInt = document.getElementById("periodInt");  
+  window.onload = refresh();
+  bandNum.oninput = function() {
+    document.getElementById("bandN").innerHTML = this.value + ' bands';
+  };
+  bandNum.onchange = function() {refresh();};
+  periodInt.oninput = function() {
+    document.getElementById("periodI").innerHTML = this.value + ' ms';
+  };
+  periodInt.onchange = function() {refresh();};
+  
+  function refresh() {
+    OKNbars(bandNum.value,periodInt.value);
+    document.getElementById("bandN").innerHTML = bandNum.value + ' bands';
+    document.getElementById("periodI").innerHTML = periodInt.value + ' ms';
+  }
+  function OKNbars(bandN, periodT) {
+    
+    var canvasWidth = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+    var barWidth = canvasWidth / (bandN*2);
+    var o_width = canvasWidth + 2*barWidth;
+    
+    var canvasHeight = window.innerHeight
+    || document.documentElement.clientHeight
+    || document.body.clientHeight;
+    var barHeight = canvasHeight;
+    
+    d3.select("svg").remove();
+    var svgContainer = d3.select("body").append("svg")
+                                        .attr("width", canvasWidth)
+                                        .attr("height", canvasHeight);
+    var bars = new Array(bandN);
+    for (i = 0; i < bandN + 1 ; i++) {
+      bars[i] = svgContainer.append("rect")
+                            .attr("width",barWidth)
+                            .attr("height",barHeight);
+    };
+
+    var start = Date.now();
+    var timer = setInterval(function() {
+      var timePassed = Date.now() - start;
+      var barX;
+      for (i = 0; i < bandN +1 ; i++) {
+        barX = ((timePassed*canvasWidth/periodT + 2*i*barWidth) % o_width) - barWidth;
+        bars[i].attr("x", barX);  
+      };
+
+      }, 10);
+
+  };
+
+  
+</script>
+</body>
+</html>
