@@ -2,56 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>OKN Drum with D3</title>
+  <title>D3 tests</title>
   <script src="https://d3js.org/d3.v4.min.js"></script>
-  <style type="text/css">
-    p {
-      display: inline;
-    }
-  </style>
 </head>
-<body>
-
-<form>  
-  <p>Band number: <input type="range" min="2" max="12" value="6" id="bandNum"></p><p id="bandN"></p> | 
-  <p>Period interval: <input type="range" min="500" max="4000" value="2000" step="100" id="periodInt"></p><p id="periodI"></p>
-  <p><button id="start">start</button></p>
-</form>
-  
+<body>  
 <script type="text/javascript">
-  var bandNum = 6;
-  var periodInt = 2000;
-  OKNbars(bandNum, periodInt);
-  
-  function OKNbars(bandN, periodT) {
-    
+    var bandN = 8;
     var canvasWidth = window.innerWidth
     || document.documentElement.clientWidth
     || document.body.clientWidth;
     var barWidth = canvasWidth / (bandN*2);
-    var o_width = canvasWidth + 2*barWidth;
     
     var canvasHeight = window.innerHeight
     || document.documentElement.clientHeight
     || document.body.clientHeight;
     var barHeight = canvasHeight;
     
-    var bars_X = new Array(bandN);
-    for (i = 0; i < bandN + 1 ; i++) {
-      bars_X[i] = 2*i*barWidth-barWidth;
-    };
-  
-    d3.selectAll('svg').remove();
     var svg = d3.select("body").append("svg")
                                .attr("width", canvasWidth)
                                .attr("height", canvasHeight);
   
+    var bars_X = new Array(bandN);
+    for (i = 0; i < bandN + 1 ; i++) {
+      bars_X[i] = 2*i*barWidth-barWidth;
+    };
+    
     var bars = svg.selectAll("rect")
           .data(bars_X)
           .enter()
           .append("rect")
           .attr("width", barWidth)
-          .attr("height", barHeight);
+          .attr("height", barHeight)
+          .attr("x", function(d){return d;})
     
     repeat();
     
@@ -59,13 +41,10 @@
       bars.attr("x", function(d){return d;})
           .transition()
           .ease(d3.easeLinear)
-          .duration(periodT/(bandN))
+          .duration(2000)
           .attr("x", function(d){return d+2*barWidth;})
           .on("end",repeat);
     };
-  };
-
-  
 </script>
 </body>
 </html>
