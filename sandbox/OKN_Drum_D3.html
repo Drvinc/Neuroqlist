@@ -20,7 +20,7 @@
   
 <script type="text/javascript">
   var bandNum = 6;
-  var periodInt = 2000;
+  var periodInt = 1000;
   OKNbars(bandNum, periodInt);
   
   function OKNbars(bandN, periodT) {
@@ -29,7 +29,7 @@
     || document.documentElement.clientWidth
     || document.body.clientWidth;
     var barWidth = canvasWidth / (bandN*2);
-    var o_width = canvasWidth + 2*barWidth;
+    barWidth = Math.round(barWidth*10)/10;
     
     var canvasHeight = window.innerHeight
     || document.documentElement.clientHeight
@@ -39,20 +39,21 @@
     var bars_X = new Array(bandN);
     for (i = 0; i < bandN + 1 ; i++) {
       bars_X[i] = 2*i*barWidth-barWidth;
+      bars_X[i] = Math.round(bars_X[i]*10)/10;
     };
   
     d3.selectAll('svg').remove();
     var svg = d3.select("body").append("svg")
                                .attr("width", canvasWidth)
                                .attr("height", canvasHeight);
-  
+    
     var bars = svg.selectAll("rect")
           .data(bars_X)
           .enter()
           .append("rect")
           .attr("width", barWidth)
           .attr("height", barHeight);
-    
+       
     repeat();
     
     function repeat(){
