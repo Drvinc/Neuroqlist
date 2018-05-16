@@ -12,16 +12,32 @@
 </head>
 <body>
 
-<form>  
   <p>Band number: <input type="range" min="2" max="12" value="6" id="bandNum"></p><p id="bandN"></p> | 
   <p>Period interval: <input type="range" min="500" max="4000" value="2000" step="100" id="periodInt"></p><p id="periodI"></p>
-  <p><button id="start">start</button></p>
-</form>
+  <p><button id="start">Refresh</button></p>
   
 <script type="text/javascript">
-  var bandNum = 6;
-  var periodInt = 1000;
-  OKNbars(bandNum, periodInt);
+  var bandNum;
+  var periodInt;
+
+  updateInput();
+  OKNbars(bandNum,periodInt);
+  
+  function updateInput (){
+    bandNum = document.getElementById("bandNum").value;
+    bandNum = parseInt(bandNum);
+    document.getElementById("bandN").innerHTML = bandNum;
+    periodInt = document.getElementById("periodInt").value;
+    document.getElementById("periodI").innerHTML = parseInt(periodInt);
+  }
+  
+  document.getElementById("bandNum").oninput = updateInput;
+  document.getElementById("periodInt").oninput = updateInput;
+  document.getElementById("start").onclick = function() {
+    d3.select("svg").remove();    
+    updateInput();
+    OKNbars(bandNum,periodInt);
+  };
   
   function OKNbars(bandN, periodT) {
     
@@ -29,7 +45,6 @@
     || document.documentElement.clientWidth
     || document.body.clientWidth;
     var barWidth = canvasWidth / (bandN*2);
-    barWidth = Math.round(barWidth*10)/10;
     
     var canvasHeight = window.innerHeight
     || document.documentElement.clientHeight
@@ -39,10 +54,9 @@
     var bars_X = new Array(bandN);
     for (i = 0; i < bandN + 1 ; i++) {
       bars_X[i] = 2*i*barWidth-barWidth;
-      bars_X[i] = Math.round(bars_X[i]*10)/10;
+      bars_X[i] = parseInt(bars_X[i]);
     };
-  
-    d3.selectAll('svg').remove();
+    
     var svg = d3.select("body").append("svg")
                                .attr("width", canvasWidth)
                                .attr("height", canvasHeight);
@@ -53,16 +67,16 @@
           .append("rect")
           .attr("width", barWidth)
           .attr("height", barHeight);
-       
+    
     repeat();
     
     function repeat(){
       bars.attr("x", function(d){return d;})
-          .transition()
-          .ease(d3.easeLinear)
-          .duration(periodT/(bandN))
-          .attr("x", function(d){return d+2*barWidth;})
-          .on("end",repeat);
+      .transition()
+      .ease(d3.easeLinear)
+      .duration(periodT/(bandN))
+      .attr("x", function(d){return d+2*barWidth;})
+      .on("end",repeat);  
     };
   };
 
