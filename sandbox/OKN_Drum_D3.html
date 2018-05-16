@@ -65,7 +65,7 @@
           .data(bars_X)
           .enter()
           .append("rect")
-          .attr("width", barWidth)
+          .attr("width", parseInt(barWidth))
           .attr("height", barHeight);
     
     repeat();
