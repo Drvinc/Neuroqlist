@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <p>Band number: <input type="range" min="2" max="12" value="6" id="bandNum"></p><p id="bandN"></p> | 
+  <p>Stripes number: <input type="range" min="2" max="12" value="6" id="bandNum"></p><p id="bandN"></p> | 
   <p>Period interval: <input type="range" min="500" max="4000" value="2000" step="100" id="periodInt"></p><p id="periodI"></p>
   <p><button id="start">Refresh</button></p>
   
@@ -26,15 +26,15 @@
   function updateInput (){
     bandNum = document.getElementById("bandNum").value;
     bandNum = parseInt(bandNum);
-    document.getElementById("bandN").innerHTML = bandNum;
+    document.getElementById("bandN").innerHTML = bandNum + ' stripes';
     periodInt = document.getElementById("periodInt").value;
-    document.getElementById("periodI").innerHTML = parseInt(periodInt);
+    document.getElementById("periodI").innerHTML = parseInt(periodInt) + ' ms';
   }
   
   document.getElementById("bandNum").oninput = updateInput;
   document.getElementById("periodInt").oninput = updateInput;
   document.getElementById("start").onclick = function() {
-    d3.select("svg").remove();    
+    d3.selectAll("svg").remove();    
     updateInput();
     OKNbars(bandNum,periodInt);
   };
@@ -54,7 +54,6 @@
     var bars_X = new Array(bandN);
     for (i = 0; i < bandN + 1 ; i++) {
       bars_X[i] = 2*i*barWidth-barWidth;
-      bars_X[i] = parseInt(bars_X[i]);
     };
     
     var svg = d3.select("body").append("svg")
@@ -65,7 +64,7 @@
           .data(bars_X)
           .enter()
           .append("rect")
-          .attr("width", parseInt(barWidth))
+          .attr("width", barWidth)
           .attr("height", barHeight);
     
     repeat();
@@ -74,13 +73,12 @@
       bars.attr("x", function(d){return d;})
       .transition()
       .ease(d3.easeLinear)
-      .duration(periodT/(bandN))
+      .duration(periodT/bandN)
       .attr("x", function(d){return d+2*barWidth;})
       .on("end",repeat);  
     };
   };
 
-  
 </script>
 </body>
 </html>

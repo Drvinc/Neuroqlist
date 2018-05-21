@@ -62,3 +62,28 @@ a{
   font-family: monospace;
   color: #777;
 }
+
+
+table {
+  max-width: 1200px;
+  margin-left: 0.5em;
+  border-spacing: 0px;
+  border: 0px;
+  border-bottom: 1px solid #006e49;
+  border-top: 1px solid #006e49;
+}
+td {
+  padding: 0.1em 0.5em;
+  vertical-align: top;
+}
+td:first-child {
+  white-space: nowrap;
+}
+tbody td:first-child:nth-last-child(2), tbody td:first-child:nth-last-child(2)~td {
+  border-top: 1px dotted #006e49;
+}
+thead tr { 
+  color: #fff;
+  border-bottom: 1px solid #006e49;
+  background-color: #006e49;
+}
