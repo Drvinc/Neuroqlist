@@ -1,21 +1,31 @@
+
 table {
   max-width: 1200px;
+  margin-left: 0.5em;
   border-spacing: 0px;
-  border-top: 1px dotted black;
-  border-bottom: 1px dotted black;
+  border: 0px;
+  border-bottom: 1px solid #006e49;
+  border-top: 1px solid #006e49;
 }
 td {
   padding: 0.1em 0.5em;
+  vertical-align: top;
 }
-tr:first-child, td:first-child { 
-  font-weight: bold;
+td:first-child {
+  white-space: nowrap;
 }
-tr:nth-child(even){
-  background-color: #f2f2f2;
+tbody td {
+  border-top: 1px dotted #006e49;
 }
-tr:first-child>td {
-  border-bottom: 1px dotted black;
+tbody tr:hover {
+  background-color: #e6fee6;
 }
+thead tr { 
+  color: #fff;
+  border-bottom: 1px solid #006e49;
+  background-color: #006e49;
+}
+
 
 figure {
   display: inline-block;
