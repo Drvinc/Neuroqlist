@@ -10,9 +10,6 @@ td {
   padding: 0.1em 0.5em;
   vertical-align: top;
 }
-td:first-child {
-  white-space: nowrap;
-}
 tbody td {
   border-top: 1px dotted #006e49;
 }
