@@ -11,17 +11,20 @@ td {
   vertical-align: top;
 }
 tbody td {
-  border-top: 1px dotted #006e49;
+  border-bottom: 1px dotted #006e49;
 }
 tbody tr:hover {
   background-color: #e6fee6;
 }
 thead tr { 
   color: #fff;
-  border-bottom: 1px solid #006e49;
   background-color: #006e49;
 }
-
+tfoot td {
+  border-top: 1px solid #006e49;
+  font-size: 0.9em;
+  color: gray;
+}
 
 figure {
   display: inline-block;
