@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mermaid Diagram</title>
+    <style>
+        .mermaid .node rect, .mermaid .node circle, .mermaid .node ellipse, .mermaid .node polygon {
+            fill: #4caf50;
+            stroke: #388e3c;
+        }
+        .mermaid .node text {
+            fill: #ffffff;
+        }
+        .mermaid .edgePath .path {
+            stroke: #4caf50;
+        }
+        .mermaid .edgeLabel text {
+            fill: #4caf50;
+        }
+    </style>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+    <div class="mermaid">
+        graph TB
+        A[Diagnosis] -->|Alzheimer's or Parkinson's dementia| B[Initial Use]
+        A -->|Vascular dementia or severe heart block| X[Do not use these treatments]
+        B --> C{MMSE or CDR Score?}
+        C -->|MMSE 10 to 26 or CDR 1 to 2| D[Mild to Moderate Dementia]
+        C -->|MMSE 10 to 14 or CDR 2| E[Moderate to Severe Dementia]
+        C -->|MMSE 5 to 9 and CDR 3| F[Severe Dementia]
+        D --> G[Prescribe donepezil, rivastigmine, or galantamine]
+        E --> H[Prescribe memantine]
+        F --> I[Prescribe donepezil and memantine, or a combination of both]
+        G --> J{Annual Reassessment}
+        H --> K{Annual Reassessment}
+        I --> L{Annual Reassessment}
+        J -->|MMSE decreases by 2 or more or CDR worsens by 1| M[Discontinue the medication]
+        K -->|MMSE decreases by 2 or more or CDR worsens by 1| N[Discontinue the medication]
+        L -->|MMSE decreases by 2 or more| O[Discontinue the medication]
+    </div>
+    <script>
+        mermaid.initialize({startOnLoad:true});
+    </script>
+</body>
+</html>
