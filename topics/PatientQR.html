@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Cards</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+        .card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            scroll-snap-align: start;
+        }
+        .card img {
+            max-width: 80vw;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <img src="/files/PatientQR/qr_code_PD.png" alt="帕金森症">
+        </div>
+        <div class="card">
+            <img src="/files/PatientQR/qr_code_stroke.png" alt="腦中風">
+        </div>
+        <div class="card">
+            <img src="/files/PatientQR/qr_code_BellPalsy.png" alt="顏面神經麻痺">
+        </div>
+        <!-- Add more cards as needed -->
+    </div>
+    <script>
+        // This script ensures smooth scrolling between cards
+        document.querySelector('.card-container').addEventListener('wheel', function(e) {
+            if (e.deltaY > 0) {
+                document.querySelector('.card-container').scrollBy(0, window.innerHeight);
+            } else {
+                document.querySelector('.card-container').scrollBy(0, -window.innerHeight);
+            }
+            e.preventDefault();
+        }, { passive: false });
+    </script>
+</body>
+</html>
