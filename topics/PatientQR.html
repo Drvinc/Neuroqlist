@@ -12,7 +12,6 @@
             height: 100%;
             overflow: hidden;
         }
-
         .card-container {
             display: flex;
             flex-direction: column;
@@ -22,31 +21,27 @@
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
         }
-
         .card {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            height: 100vh;
+            width: 100vw; /* Full viewport width */
+            height: 100vh; /* Full viewport height */
             scroll-snap-align: start;
             opacity: 0.5; /* Lightened effect for inactive cards */
         }
-
         .card img {
             max-width: 80vw;
             max-height: 80vh;
             object-fit: contain;
         }
-
         .card-description {
             margin-top: 20px;
             text-align: center;
         }
-
         /* Style for the active card */
-        .card:target {
+        .card.active {
             opacity: 1;
         }
     </style>
@@ -68,9 +63,22 @@
         <!-- Add more cards as needed -->
     </div>
     <script>
-        // This script ensures smooth scrolling between cards
-        document.querySelector('.card-container').addEventListener('wheel', function(e) {
-            const cards = document.querySelectorAll('.card');
+        const container = document.querySelector('.card-container');
+        const cards = document.querySelectorAll('.card');
+
+        function updateActiveCard() {
+            cards.forEach((card, index) => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+        }
+
+        container.addEventListener('scroll', updateActiveCard);
+        container.addEventListener('wheel', function(e) {
             let currentCardIndex = 0;
             cards.forEach((card, index) => {
                 const rect = card.getBoundingClientRect();
@@ -79,12 +87,15 @@
                 }
             });
             if (e.deltaY > 0 && currentCardIndex < cards.length - 1) {
-                location.hash = `#card${currentCardIndex + 2}`;
+                cards[currentCardIndex + 1].scrollIntoView({ behavior: 'smooth' });
             } else if (e.deltaY < 0 && currentCardIndex > 0) {
-                location.hash = `#card${currentCardIndex}`;
+                cards[currentCardIndex - 1].scrollIntoView({ behavior: 'smooth' });
             }
             e.preventDefault();
         }, { passive: false });
+
+        // Initial call to set the first card as active
+        updateActiveCard();
     </script>
 </body>
 </html>
