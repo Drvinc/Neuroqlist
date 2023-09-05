@@ -12,6 +12,7 @@
             height: 100%;
             overflow: hidden;
         }
+
         .card-container {
             display: flex;
             flex-direction: column;
@@ -21,41 +22,66 @@
             overflow-y: scroll;
             scroll-snap-type: y mandatory;
         }
+
         .card {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             width: 100%;
             height: 100vh;
             scroll-snap-align: start;
+            opacity: 0.5; /* Lightened effect for inactive cards */
         }
+
         .card img {
             max-width: 80vw;
             max-height: 80vh;
             object-fit: contain;
         }
+
+        .card-description {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Style for the active card */
+        .card:target {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
     <div class="card-container">
-        <div class="card">
+        <div class="card" id="card1">
             <img src="../files/PatientQR/qr_code_PD.png" alt="帕金森症">
+            <div class="card-description">帕金森症</div>
         </div>
-        <div class="card">
+        <div class="card" id="card2">
             <img src="../files/PatientQR/qr_code_stroke.png" alt="腦中風">
+            <div class="card-description">腦中風</div>
         </div>
-        <div class="card">
+        <div class="card" id="card3">
             <img src="../files/PatientQR/qr_code_BellPalsy.png" alt="顏面神經麻痺">
+            <div class="card-description">顏面神經麻痺</div>
         </div>
         <!-- Add more cards as needed -->
     </div>
     <script>
         // This script ensures smooth scrolling between cards
         document.querySelector('.card-container').addEventListener('wheel', function(e) {
-            if (e.deltaY > 0) {
-                document.querySelector('.card-container').scrollBy(0, window.innerHeight);
-            } else {
-                document.querySelector('.card-container').scrollBy(0, -window.innerHeight);
+            const cards = document.querySelectorAll('.card');
+            let currentCardIndex = 0;
+            cards.forEach((card, index) => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                    currentCardIndex = index;
+                }
+            });
+            if (e.deltaY > 0 && currentCardIndex < cards.length - 1) {
+                location.hash = `#card${currentCardIndex + 2}`;
+            } else if (e.deltaY < 0 && currentCardIndex > 0) {
+                location.hash = `#card${currentCardIndex}`;
             }
             e.preventDefault();
         }, { passive: false });
