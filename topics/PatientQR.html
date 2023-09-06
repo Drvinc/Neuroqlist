@@ -5,45 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Cards</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        .card-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-        }
-        .card {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100vw; /* Full viewport width */
-            height: 100vh; /* Full viewport height */
-            scroll-snap-align: start;
-            opacity: 0.5; /* Lightened effect for inactive cards */
-        }
-        .card img {
-            max-width: 80vw;
-            max-height: 80vh;
-            object-fit: contain;
-        }
-        .card-description {
-            margin-top: 20px;
-            text-align: center;
-        }
-        /* Style for the active card */
-        .card.active {
-            opacity: 1;
-        }
+      body, html {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+      }
+
+      .card-container {
+          flex: 1; /* This will ensure that the container takes up the remaining space */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          overflow-y: scroll;
+          scroll-snap-type: y mandatory;
+      }
+
+      .card {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100vh; /* This ensures the card takes up the full viewport height */
+          scroll-snap-align: start;
+          opacity: 0.5;
+      }
+
+      .card img {
+          max-width: 80vw;
+          max-height: 80vh;
+          object-fit: contain;
+      }
+
+      .card-description {
+          margin-top: 20px;
+          text-align: center;
+      }
+
+      .card.active {
+          opacity: 1;
+      }
+
     </style>
 </head>
 <body>
@@ -63,39 +70,38 @@
         <!-- Add more cards as needed -->
     </div>
     <script>
-        const container = document.querySelector('.card-container');
-        const cards = document.querySelectorAll('.card');
+      const container = document.querySelector('.card-container');
+      const cards = document.querySelectorAll('.card');
 
-        function updateActiveCard() {
-            cards.forEach((card, index) => {
-                const rect = card.getBoundingClientRect();
-                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-                    card.classList.add('active');
-                } else {
-                    card.classList.remove('active');
-                }
-            });
-        }
+      function updateActiveCard() {
+          // ... [rest of the function] ...
+      }
 
-        container.addEventListener('scroll', updateActiveCard);
-        container.addEventListener('wheel', function(e) {
-            let currentCardIndex = 0;
-            cards.forEach((card, index) => {
-                const rect = card.getBoundingClientRect();
-                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-                    currentCardIndex = index;
-                }
-            });
-            if (e.deltaY > 0 && currentCardIndex < cards.length - 1) {
-                cards[currentCardIndex + 1].scrollIntoView({ behavior: 'smooth' });
-            } else if (e.deltaY < 0 && currentCardIndex > 0) {
-                cards[currentCardIndex - 1].scrollIntoView({ behavior: 'smooth' });
-            }
-            e.preventDefault();
-        }, { passive: false });
+      let debounceTimeout;
+      function handleScroll(e) {
+          clearTimeout(debounceTimeout);
+          debounceTimeout = setTimeout(() => {
+              let currentCardIndex = 0;
+              cards.forEach((card, index) => {
+                  const rect = card.getBoundingClientRect();
+                  if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                      currentCardIndex = index;
+                  }
+              });
+              if (e.deltaY > 0 && currentCardIndex < cards.length - 1) {
+                  cards[currentCardIndex + 1].scrollIntoView({ behavior: 'smooth' });
+              } else if (e.deltaY < 0 && currentCardIndex > 0) {
+                  cards[currentCardIndex - 1].scrollIntoView({ behavior: 'smooth' });
+              }
+              e.preventDefault();
+          }, 100); // Debounce time of 100ms
+      }
 
-        // Initial call to set the first card as active
-        updateActiveCard();
-    </script>
+      container.addEventListener('scroll', updateActiveCard);
+      container.addEventListener('wheel', handleScroll, { passive: false });
+
+      // Initial call to set the first card as active
+      updateActiveCard();
+  </script>
 </body>
 </html>
