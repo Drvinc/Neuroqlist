@@ -8,15 +8,13 @@
       body, html {
           margin: 0;
           padding: 0;
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
           display: flex;
           flex-direction: column;
+          height: auto;
       }
 
       .card-container {
-          flex: 1; /* This will ensure that the container takes up the remaining space */
+          flex: 1;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -31,7 +29,7 @@
           justify-content: center;
           align-items: center;
           width: 100%;
-          height: 100vh; /* This ensures the card takes up the full viewport height */
+          height: 100vh;
           scroll-snap-align: start;
           opacity: 0.5;
       }
@@ -50,8 +48,7 @@
       .card.active {
           opacity: 1;
       }
-
-    </style>
+  </style>
 </head>
 <body>
     <div class="card-container">
@@ -72,34 +69,21 @@
     <script>
       const container = document.querySelector('.card-container');
       const cards = document.querySelectorAll('.card');
-
+  
       function updateActiveCard() {
-          // ... [rest of the function] ...
+        cards.forEach((card, index) => {
+            const rect = card.getBoundingClientRect();
+            const cardMiddle = (rect.top + rect.bottom) / 2;
+            if (cardMiddle >= 0 && cardMiddle <= window.innerHeight) {
+                card.classList.add('active');
+            } else {
+                card.classList.remove('active');
+            }
+      });
       }
-
-      let debounceTimeout;
-      function handleScroll(e) {
-          clearTimeout(debounceTimeout);
-          debounceTimeout = setTimeout(() => {
-              let currentCardIndex = 0;
-              cards.forEach((card, index) => {
-                  const rect = card.getBoundingClientRect();
-                  if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-                      currentCardIndex = index;
-                  }
-              });
-              if (e.deltaY > 0 && currentCardIndex < cards.length - 1) {
-                  cards[currentCardIndex + 1].scrollIntoView({ behavior: 'smooth' });
-              } else if (e.deltaY < 0 && currentCardIndex > 0) {
-                  cards[currentCardIndex - 1].scrollIntoView({ behavior: 'smooth' });
-              }
-              e.preventDefault();
-          }, 100); // Debounce time of 100ms
-      }
-
+  
       container.addEventListener('scroll', updateActiveCard);
-      container.addEventListener('wheel', handleScroll, { passive: false });
-
+  
       // Initial call to set the first card as active
       updateActiveCard();
   </script>
